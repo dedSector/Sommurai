@@ -33,6 +33,7 @@ public class GameMean extends GameBase{
             super.sum = 0;
             boolean changed = true;
             for(int i=0; i<super.getCuts(); i++){
+                System.out.println(super.getAllNumbers()[i]);
                 if(super.getAllNumbers()[i] > max && changed){
                     super.getAllNumbers()[i] = super.getAllNumbers()[i] - max;
                     solution[i] = Integer.toString(super.getAllNumbers()[i]);
