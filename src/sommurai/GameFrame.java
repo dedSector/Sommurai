@@ -104,7 +104,7 @@ public class GameFrame extends JFrame
                     }
                 }
                 */
-                if(gv.getColorClick() == gb.getCuts() || allclicked){
+                if( allclicked || (gv.getColorClick() == gb.getCuts() && gcp.getChkNoise().isSelected() )){
                     if(gb.verifySum(gv.getSumNumbers())){
                         for(Component c : comps){
                             c.setBackground(Color.GREEN);

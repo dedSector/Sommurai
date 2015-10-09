@@ -26,6 +26,25 @@ public class GameMean extends GameBase{
             display += Integer.toString(super.getAllNumbers()[cuts]);
             solution[cuts] = Integer.toString(super.getAllNumbers()[cuts]);
         }
+        
+        if(super.getSum() % super.getCuts() != 0){
+            int max = super.getSum() % super.getCuts();
+            display = "";
+            super.sum = 0;
+            boolean changed = true;
+            for(int i=0; i<super.getCuts(); i++){
+                if(super.getAllNumbers()[i] > max && changed){
+                    super.getAllNumbers()[i] = super.getAllNumbers()[i] - max;
+                    solution[i] = Integer.toString(super.getAllNumbers()[i]);
+                    display += Integer.toString(super.getAllNumbers()[i]);
+                    changed = false;
+                } else{
+                    solution[i] = Integer.toString(super.getAllNumbers()[i]);
+                    display += Integer.toString(super.getAllNumbers()[i]);
+                }
+                sum += super.getAllNumbers()[i];
+            }
+        }
     }
     
     /**
