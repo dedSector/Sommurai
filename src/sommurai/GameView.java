@@ -30,6 +30,7 @@ class GameView extends JPanel{
     private int firstclick;
     int sum;
     int colorClick = 0;
+    ArrayList<Integer> _numbers = new ArrayList<>();
     ArrayList<ButtonPannel> buttonPannel;
     
     /**
@@ -72,10 +73,12 @@ class GameView extends JPanel{
                     if(release - firstclick == 1){
                         buttonPannel.get(firstclick).setBackground(colors[colorClick]);
                         buttonPannel.get(release).setBackground(colors[colorClick]);
+                        _numbers.add(Integer.parseInt(buttonPannel.get(firstclick).getNumber().toString() + buttonPannel.get(release).getNumber().toString()));
                         sum += Integer.parseInt(buttonPannel.get(firstclick).getNumber().toString() + buttonPannel.get(release).getNumber().toString());
                     } else {
                         buttonPannel.get(firstclick).setBackground(colors[colorClick]);
                         sum += Integer.parseInt(buttonPannel.get(firstclick).getNumber().toString());
+                        _numbers.add(Integer.parseInt(buttonPannel.get(firstclick).getNumber().toString()));
                     }
                 }
                 colorClick++;
@@ -138,6 +141,11 @@ class GameView extends JPanel{
     public void resetSum(){
         sum = 0;
         colorClick = 0;
+        _numbers.clear();
+    }
+    
+    public ArrayList<Integer> getSumNumbers(){
+        return _numbers;
     }
     
     /**

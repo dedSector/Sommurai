@@ -5,6 +5,8 @@
  */
 package sommurai.BackEnd;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Bert
@@ -58,14 +60,18 @@ public class GameAll extends GameBase{
      * @return la solution
      */
     @Override
-    public Boolean verifySum(int[] inputs) {
+    public Boolean verifySum(ArrayList<Integer> inputs) {
+        if(inputs.size() != super.getCuts()){
+            return false;
+        }
+        
         int newSum = 0;
         
         for(int i:inputs){
             newSum += i;
         }
         
-        return newSum / super.getCuts() == super.getSum() / super.getCuts();
+        return (newSum / super.getCuts() == super.getSum() / super.getCuts()) && (newSum % super.getCuts() == super.getSum() % super.getCuts());
     }
     
     /**

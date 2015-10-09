@@ -5,6 +5,8 @@
  */
 package sommurai.BackEnd;
 
+import java.util.ArrayList;
+
 /**
  * les fonctions à implémenter afin de faire une partie
  * @author Bert
@@ -12,5 +14,5 @@ package sommurai.BackEnd;
 public interface GameInterface {
     String getSumNumbers();
     String[] getSolution();
-    Boolean verifySum(int[] inputs);
+    Boolean verifySum(ArrayList<Integer> inputs);
 }

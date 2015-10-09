@@ -5,6 +5,8 @@
  */
 package sommurai.BackEnd;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Bert
@@ -51,7 +53,11 @@ public class GameNoize extends GameBase{
      * @return si la somme entrée égale la somme à trouver
      */
     @Override
-    public Boolean verifySum(int[] inputs) {
+    public Boolean verifySum(ArrayList<Integer> inputs) {
+        if(inputs.size() != super.getCuts()){
+            return false;
+        }
+        
         int inputSum = 0;
         
         for(int singleNumber : inputs){

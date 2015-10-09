@@ -75,17 +75,25 @@ public class GameFrame extends JFrame
 
             @Override
             public void mouseReleased(MouseEvent e) {
+                boolean allclicked = true;
                 gcp.getLblSomme().setText(Integer.toString(gv.getSum()) + "(" + Integer.toString(gv.getColorClick()) + ")");
                 Component[] comps = gv.getComponents();
-                if(!gcp.getChkMean().isSelected() && gv.getSum() == gb.getSum()){
+                for(Component comp : comps){
+                    if(comp.getBackground() == Color.WHITE){
+                        allclicked = false;
+                    }
+                }
+                
+                /*
+                if(!gcp.getChkMean().isSelected() && gb.verifySum((Integer[]) gv.getSumNumbers().toArray())){
                     for(Component c : comps){
                         c.setBackground(Color.green);
                     }
-                } else if(!gcp.getChkMean().isSelected() && (gv.getSum() > gb.getSum() || gv.getColorClick() >= gb.getCuts())){
+                } else if(!gcp.getChkMean().isSelected() && (gv.getSum() > gb.getSum() || gv.getColorClick() == gb.getCuts())){
                     for(Component c : comps){
                         c.setBackground(Color.red);
                     }
-                } else if(gcp.getChkMean().isSelected() && (gv.getColorClick() >= gb.getCuts()) && (gv.getSum() / gv.getColorClick() != gb.getSum())){
+                } else if(gcp.getChkMean().isSelected() && (gv.getColorClick() == gb.getCuts()) && (gv.getSum() / gv.getColorClick() != gb.getSum())){
                     for(Component c : comps){
                         c.setBackground(Color.red);
                     }
@@ -94,6 +102,19 @@ public class GameFrame extends JFrame
                     for(Component c : comps){
                         c.setBackground(Color.green);
                     }
+                }
+                */
+                if(gv.getColorClick() == gb.getCuts() || allclicked){
+                    if(gb.verifySum(gv.getSumNumbers())){
+                        for(Component c : comps){
+                            c.setBackground(Color.GREEN);
+                        }
+                    } else {
+                        for(Component c : comps){
+                            c.setBackground(Color.RED);
+                        }
+                    }
+                    gv.resetSum();
                 }
             }
 

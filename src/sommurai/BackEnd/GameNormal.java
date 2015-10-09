@@ -5,6 +5,8 @@
  */
 package sommurai.BackEnd;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Bert
@@ -41,12 +43,19 @@ public class GameNormal extends GameBase
      * @return si la somme entrée esst égale à la somme calulée
      */
     @Override
-    public Boolean verifySum(int[] inputs) {
+    public Boolean verifySum(ArrayList<Integer> inputs) {
+        if(inputs.size() != super.getCuts()){
+            return false;
+        }
+        
         int sumTry = 0;
         
         for(int singleNumber : inputs){
             sumTry += singleNumber;
         }
+        
+        System.out.println(sumTry);
+        System.out.println(super.getCuts());
         
         return (sumTry == super.getSum());
     }

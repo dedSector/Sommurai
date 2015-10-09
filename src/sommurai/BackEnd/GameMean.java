@@ -5,6 +5,8 @@
  */
 package sommurai.BackEnd;
 
+import java.util.ArrayList;
+
 /**
  * Partie avec la moyenne
  * @author Bert
@@ -50,13 +52,19 @@ public class GameMean extends GameBase{
      * @return si la somme entrée est égale à la somme calculée
      */
     @Override
-    public Boolean verifySum(int[] inputs){
+    public Boolean verifySum(ArrayList<Integer> inputs){
+        if(inputs.size() != super.getCuts()){
+            return false;
+        }
+        
         int inputSum = 0;
+        
+        
         for(int singleNumber : inputs){
             inputSum += singleNumber;
         }
         
-        return (inputSum/super.getCuts()) == (super.getSum() / super.getCuts());
+        return (inputSum/super.getCuts()) == (super.getSum() / super.getCuts()) && (inputSum % super.getCuts()) == (super.getSum() % super.getCuts());
     }
 
     /**
